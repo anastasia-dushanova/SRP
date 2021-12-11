@@ -57,7 +57,7 @@ namespace LR4
             String M = HashFunction6((hashN ^ hashG).ToString(), hashI, s.ToString(), A.ToString(), B.ToString(), K);
             Console.WriteLine("Клиент: M = {0}", M);
             String server_R = server.server_M(M);
-            if (server_R.Equals(null)) Console.WriteLine("Клиент: Сервер приостановил соединение из-за того, что M не равны");
+            if (server_R.Equals("0")) Console.WriteLine("Клиент: Сервер приостановил соединение из-за того, что M не равны");
             else
             {
                 String R = Program.HashFunction3(A.ToString(), M, K);
@@ -238,7 +238,7 @@ namespace LR4
             if (!M.Equals(Client_M))
             {
                 Console.WriteLine("Сервер: М - клиент и М - сервер не равны, соединение приостановлено");
-                return null;
+                return "0";
             }
             else
             {
